@@ -44,7 +44,7 @@ function _powershell(img::AbstractMatrix{<:Colorant})
         getfile = `\$file = get-item\(\"$(path_png)\"\)\;`
         getimg = `\$img = \[System.Drawing.Image\]::Fromfile\(\$file\)\;`
         copyimg = `\[System.Windows.Forms.Clipboard\]::SetImage\(\$img\)\;`
-        cmd = `powershell.exe $addtype $adddrawing $getfile $getimg $copyimg`
+        cmd = `powershell.exe -NoProfile $addtype $adddrawing $getfile $getimg $copyimg`
         run(cmd)
     end
 end
