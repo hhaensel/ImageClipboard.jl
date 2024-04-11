@@ -27,7 +27,7 @@ function clipboard_img()
         else
             error("Please install wlclipboard or xclip to your system")
         end
-    elseif Sys.iswindows() || haskey(ENV, "WSLENV")
+    elseif Sys.iswindows() || Sys.islinux() && haskey(ENV, "WSLENV")
         img = _powershell()
     elseif Sys.islinux()
         if _isavailable_xclip()
@@ -57,7 +57,7 @@ function clipboard_img(img::AbstractMatrix{<:Colorant})
         else
             error("Please install wlclipboard or xclip to your system")
         end
-    elseif Sys.iswindows() || haskey(ENV, "WSLENV")
+    elseif Sys.iswindows() || Sys.islinux() && haskey(ENV, "WSLENV")
         _powershell(img)
     elseif Sys.islinux()
         if _isavailable_xclip()
